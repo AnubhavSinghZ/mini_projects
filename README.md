@@ -35,7 +35,7 @@ This repository was created to practice Python fundamentals and improve problem-
 ## How to Run
 
 1. Clone the repository:
-   git clone https://github.com/your-username/mini_projects.git
+   git clone https://github.com/AnubhavSinghZ/mini_projects.git
 
 2. Open the project folder.
 
