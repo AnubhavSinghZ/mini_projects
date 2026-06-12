@@ -47,4 +47,5 @@ This repository was created to practice Python fundamentals and improve problem-
 Anubhav Singh
 
 Learning Python and building projects to strengthen programming skills.
+<br>
 Learning AI & ML 
