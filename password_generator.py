@@ -12,5 +12,5 @@ password = ""
 for i in range(length):
     password += random.choice(characters)
 
-print("\nGenerated Password:")
-print(password)
+print("\nThe Generated Password is:")
+print(password) 
