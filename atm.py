@@ -1,7 +1,7 @@
 def atm_projcts():
-    balance=1000    #starting balane
+    balance=10000    #starting balane
     is_running=True
-    print("---THIS IS AN SMALL ATM---")
+    print("---THIS IS A DEMO ATM---")
 
     while is_running:
         print("\n1. Blanace\n2. Deposit \n3. Withdraw\n4. Exit")
@@ -13,7 +13,7 @@ def atm_projcts():
 
             case "2":
                 amount=float(input("Deposit amount:"))
-                balance+= amount
+                balance+=amount
                 print("Done!")
 
 
@@ -24,7 +24,7 @@ def atm_projcts():
                     print("Done!")
 
             case "4":
-                print("Thanks! & Bye!")
+                print("Thanks You! Bye!")
                 is_running=False
 
             case _:
