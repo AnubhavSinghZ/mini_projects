@@ -20,12 +20,16 @@ A game where the user tries to guess a randomly generated number within a limite
 <br>
 A console-based implementation of the classic Snake and Ladders game.
 
-## Technologies Used
+## Python.....?
 <br>
 * Python 3
+<br>
 * Functions
+<br>
 * Loops
+<br>
 * Conditional Statements
+<br>
 * Random Module
 
 ## Purpose
