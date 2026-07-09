@@ -42,4 +42,4 @@ else:
     print(f"{'Number':<10}{'Count': <10}")
     print("-"*20)
     for num in sorted(unique_counts):
-        print(f"{num:10}{unique_counts[10]:<10}")
+        print(f"{num:10}{unique_counts[num]:<10}")
