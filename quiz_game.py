@@ -5,7 +5,7 @@ A simple multpile-choice quiz that tracks and shows your final score.
 
 # Each Question is a dictionary with the question, options, and correct answer
 
-question =[
+questions =[
     {
         "question": "What is the Capital of India ?",
         "options":["A. Kolkata", "B. Delhi", "C. New Delhi", "D. Mumbai"],
@@ -67,4 +67,4 @@ def show_result(score, total):
  
  
 if __name__ == "__main__":
-    run_quiz(question)
+    run_quiz(questions)
