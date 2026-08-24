@@ -20,6 +20,10 @@ A game where the user tries to guess a randomly generated number within a limite
 <br>
 A console-based implementation of the classic Snake and Ladders game.
 
+### 5. Expense Tracker
+<br>
+A terminal based expense tracker in which user will give the all the details like date, description on which he spent, it will store all the expenses and after adding it will give total spent. This uses basically If else elif list dictionary and basic python. 
+
 ## Python.....?
 <br>
 * Python 3
