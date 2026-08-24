@@ -42,7 +42,7 @@ while True:
             for eachexpense in expencesList:
                 total=total+eachexpense["amount"]
 
-                print(("\n Total Spent", total))
+                print("\n Total Spent:", total)
 
 #  Exit
     elif(choice==4):
