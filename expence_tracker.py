@@ -21,6 +21,7 @@ while True:
             "Date": date,
             "Category": category,
             "amount": amount,
+            "description":  description,
         }
         expencesList.append(expence)
         print("\nCOOL,Exppences is Added successfully")
@@ -33,7 +34,7 @@ while True:
             print("=== This is Expences")
             count = 1
             for eachexpense in expencesList:
-                print(f" Expenxe Number {count} --> {eachexpense['date']}, {eachexpense['category']}, {eachexpense['description']}, {eachexpense['amount']} ")
+                print(f" Expenxe Number {count} --> {eachexpense["Date"]}, {eachexpense['Category']}, {eachexpense['description']}, {eachexpense['amount']} ")
                 count += 1
         # View Total Spent
     elif(choice==3):
