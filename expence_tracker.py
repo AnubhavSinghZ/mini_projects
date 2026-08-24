@@ -33,8 +33,8 @@ while True:
             print("=== This is Expences")
             count = 1
             for eachexpense in expencesList:
-            print(f" Expenxe Number {count} --> {eachexpense['date']}, {eachexpense['category']}, {eachexpense['description']}, {eachexpense['amount']} ")
-            count += 1
+                print(f" Expenxe Number {count} --> {eachexpense['date']}, {eachexpense['category']}, {eachexpense['description']}, {eachexpense['amount']} ")
+                count += 1
         # View Total Spent
     elif(choice==3):
             
