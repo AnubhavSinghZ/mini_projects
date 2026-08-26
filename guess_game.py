@@ -6,3 +6,10 @@ print("Good Luck !", name)
 words=["Python", "java", "Javascript", "C++", "Computer", "Programming", "Algorithms", "Mathematics", "Conditions", "Loops", "Rainbow"]
 # Random choose a word from the list by using random.choice() method
 word=random.choice(words) #Randomly choose a word from the list
+print("\n Guess the character in the word")
+
+#  Store guessed characters
+guess=""
+
+# Number of turns
+Turns= 12
