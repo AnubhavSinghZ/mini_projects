@@ -15,3 +15,4 @@ while active:
         elif user_input == "/": print(f"Result: {num1 / num2}")
     else:
         print("Invalid! Try Again")
+        print("Try with right one")
