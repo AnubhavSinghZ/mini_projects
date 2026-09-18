@@ -13,3 +13,17 @@ def extract_intent(sentence):
         intent="delete"
     else:
         intent="unknown"
+
+    # --- Priority Detection---
+    priority="high" if any(w in sentence for w in["urgent", "asap", "important",]) else "medium"
+
+    # Date Manipulation
+
+    if "tomorrow" in sentence:
+        due = (date.today()+timedelta(days=1)).isoformat()
+    elif "today" in sentence:
+        due = date.today().isoformat()
+    else:
+        match = re.search(r"in(\d+) days?", sentence)
+        if match:
+            due= (date.today()+ timedelta(days=int(match.group(1)))).isoformat()
