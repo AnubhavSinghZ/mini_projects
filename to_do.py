@@ -27,3 +27,13 @@ def extract_intent(sentence):
         match = re.search(r"in(\d+) days?", sentence)
         if match:
             due= (date.today()+ timedelta(days=int(match.group(1)))).isoformat()
+
+
+    # --- Title extraction (strip the trigger phrase, keep the rest) ---
+    title=re.sub(r"(remind me to | add | i need to)","", sentence)
+    title=re.sub(r"(tomorrow | today | urgent | asap | important | in \d+ days?)", "", title)
+    title=title.strip(",.")
+
+    return {"intent": intent, "title": title, "priority": priority, "due": due}
+
+print(extract_intent("remind me to buy milk tomorrow, it's urgent"))
