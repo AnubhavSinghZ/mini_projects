@@ -87,4 +87,23 @@ def extract_habit_log(sentence: str) -> Dict[str, Any]:
         status="unknown"
 
     # --- Duration Detection ---
-    
+    duration_match=DURATION_PATTERN.search(sentence)
+    duration_minutes=_extract_duration(sentence)
+
+    # --- Date Detection ---
+    log_date= _extract_date(sentence)
+
+    # --- habit name ---
+    habit = _extract_habit_name(sentence, duration_match)
+    return{
+        "habit":habit,
+        "status": status,
+        "durtion_minutes":duration_minutes,
+        "date":log_date,
+    }
+
+if __name__  == "__main__":
+    # A few quick demo calls
+    print(extract_habit_log("did 30 min yoga today"))
+    print(extract_habit_log("skipped gym yesterday"))
+    print(extract_habit_log("completed 1 hour reading"))
