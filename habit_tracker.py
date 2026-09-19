@@ -73,3 +73,18 @@ def extract_habit_log(sentence: str) -> Dict[str, Any]:
         extract_habit_log("did 30 min yoga today")
         -> {'habit': 'yoga', 'status': 'done', 'duration_minutes': 30, 'date': '2026-09-19'}
     """
+    if not sentence or not sentence.strip():
+        raise ValueError("Sentence must be a non-empty string")
+
+    sentence=sentence.lower()
+
+    #--- Status Detection ---
+    if _contain_word(sentence,SKIPPED_WORDS):
+        status="skipped"
+    elif _contain_word(sentence, COMPLETION_WORDS):
+        status="done"
+    else:
+        status="unknown"
+
+    # --- Duration Detection ---
+    
