@@ -64,3 +64,12 @@ def _extract_habit_name(sentence: str, duration_match:Optional[re.Match]) -> str
         # clean up leftover extraspaces and pumctuation
     title=re.sub(r"\s+", " ", title).strip(" ,.")
     return title
+
+def extract_habit_log(sentence: str) -> Dict[str, Any]:
+    """
+    Parse a natural-language habit log sentence into structured data.
+
+    Example:
+        extract_habit_log("did 30 min yoga today")
+        -> {'habit': 'yoga', 'status': 'done', 'duration_minutes': 30, 'date': '2026-09-19'}
+    """
