@@ -12,4 +12,30 @@ while True:
 
     elif choice=="2":
         if len(books)==0:
+            print("No books yet!")
+        for i in range(len(books)):
+            if books[i][2]:
+                status="Available"
             
+        else:
+            status="Issued"
+        print(i+1,books[i][0], status)
+    elif choice=="3" or choice=="4":
+        title=input("Title:")
+        found=False
+        for book in books:
+            if book[0]==title:
+                found=True
+                if choice=="3" and book[2]:
+                    book[2]=True
+                    print("Book Returned !")
+                else:
+                    print("Not Possible right now !!")
+    if not found:
+        print("Book not found")
+
+    elif choice=="5":
+        print("Bye!!")
+        break
+    else:
+        print("Invalid Choice:")
