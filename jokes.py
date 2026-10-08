@@ -13,3 +13,6 @@ while count<=5:
     count=count+1
 
 print()
+
+print("BONUS FUNNY JOKES:")
+print(pyjokes.get_joke(category="chuck"))
