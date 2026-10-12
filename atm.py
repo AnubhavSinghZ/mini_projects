@@ -1,5 +1,5 @@
 def atm_projcts():
-    balance=10000    #starting balane
+    balance=10000    #starting balance
     is_running=True
     print("---THIS IS A DEMO ATM---")
 
@@ -7,7 +7,7 @@ def atm_projcts():
         print("\n1. Blanace\n2. Deposit \n3. Withdraw\n4. Exit")
         choice=input("choose according to your case:")
 
-        match choice:  #The match statement replaces"if/else
+        match choice:  #The match statement replaces" if/else
             case "1":
                 print("Balance:${balance}")
 
