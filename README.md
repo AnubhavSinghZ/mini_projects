@@ -1,4 +1,4 @@
-# 🐍 Python Mini Projects
+# 🐍 Python Mini Projects Repos
 
 **A collection of beginner-friendly Python mini projects, built while learning Python programming fundamentals.**
 
