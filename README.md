@@ -1,6 +1,6 @@
 # 🐍 Python Mini Projects Repository 
 
-**A collection of beginner-friendly Python mini projects, built while learning Python programming fundamentals.**
+**A collection of beginner-friendly, easy Python mini projects, built while learning Python programming fundamentals.**
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Learning-brightgreen)
