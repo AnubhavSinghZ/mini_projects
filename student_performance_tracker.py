@@ -26,4 +26,23 @@ class Student:
         self.name=name
         self.study_hours=study_hours  # average hour study per day
         self.marks=marks or {}  # e.g. {Maths:85, Science:89}
+
+        def total(self):
+            return sum(self.marks.value())
+
+        def average(self):
+            return self.total() / len(self.marks) if self.marks else 0
+        def grade(self):
+            avg=self.average()
+            if avg>=90:
+                return "A+"
+            if avg>=80:
+                return "A"
+            if avg>=70:
+                return  "B"
+            if avg>=60:
+                return "C"
+            if avg>=PASS_MARK:
+                return "D"
+            return "F"
         
