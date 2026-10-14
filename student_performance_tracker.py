@@ -45,4 +45,30 @@ class Student:
             if avg>=PASS_MARK:
                 return "D"
             return "F"
-        
+        def has_passed(self):
+            """Pass only if every subject is at or above the pass mark."""
+            return bool(self.marks) and all(m>= PASS_MARK for m in self.marks.values())
+        def to_dict(self):
+            return{
+                "roll_no": self.roll_no,
+                "name": self.name,
+                "study_hours": self.study_hours,
+                "marks": self.marks,
+            }
+        @staticmethod
+        def from_dict(data):
+            return Student(data["roll_no"], data["name"], data["study_hours"], data["marks"])
+
+        # -----Input Helpers-----
+
+        def get_number(prompt, low,high, as_int=False):
+            """Keep asking until the user enters a number between low and high."""
+            while True:
+                try:
+                    value=int(input(prompt)) if as_int else float(input(prompt))
+                    if low<=value<=high:
+                        return value
+                    print(f"Enter a value between {low} and {high}")
+                expect ValueError:
+                
+                
