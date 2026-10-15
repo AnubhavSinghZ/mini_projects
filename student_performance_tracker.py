@@ -27,40 +27,42 @@ class Student:
         self.study_hours=study_hours  # average hour study per day
         self.marks=marks or {}  # e.g. {Maths:85, Science:89}
 
-        def total(self):
-            return sum(self.marks.value())
-
-        def average(self):
-            return self.total() / len(self.marks) if self.marks else 0
-        def grade(self):
-            avg=self.average()
-            if avg>=90:
-                return "A+"
-            if avg>=80:
-                return "A"
-            if avg>=70:
-                return  "B"
-            if avg>=60:
-                return "C"
-            if avg>=PASS_MARK:
-                return "D"
-            return "F"
-        def has_passed(self):
-            """Pass only if every subject is at or above the pass mark."""
-            return bool(self.marks) and all(m>= PASS_MARK for m in self.marks.values())
-        def to_dict(self):
-            return{
+    def total(self):
+        return sum(self.marks.value())
+    
+    def average(self):
+        return self.total() / len(self.marks) if self.marks else 0
+    def grade(self):
+        avg=self.average()
+        if avg>=90:
+            return "A+"
+        if avg>=80:
+            return "A"
+        if avg>=70:
+            return  "B"
+        if avg>=60:
+            return "C"
+        if avg>=PASS_MARK:
+            return "D"
+        return "F"
+    def has_passed(self):
+        """Pass only if every subject is at or above the pass mark."""
+        return bool(self.marks) and all(m>= PASS_MARK for m in self.marks.values())
+    def to_dict(self):
+        return{
                 "roll_no": self.roll_no,
                 "name": self.name,
                 "study_hours": self.study_hours,
                 "marks": self.marks,
             }
-        @staticmethod
-        def from_dict(data):
-            return Student(data["roll_no"], data["name"], data["study_hours"], data["marks"])
-
-        # -----Input Helpers-----
-
-        
-                
-                
+    @staticmethod
+    def from_dict(data):
+        return Student(data["roll_no"], data["name"], data["study_hours"], data["marks"])
+    
+          # ---- SAVING AND LOADING----
+    
+    
+            
+                    
+                    
+    
