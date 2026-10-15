@@ -67,7 +67,16 @@ def load_students():
     try:
         with open(DATA_FILE, "r",encoding="utf-8") as f:
             return[Student.from_dict(d) for d in json.load(f)]
-    
+    except(json.JSONDecodeError, KeyError, OSError):
+        print("Could not read the data file. Starting with an empty list.")
+        return[]
+
+    def save_students(students):
+        try:
+            with open(DATA_FILE,"w", encoding="utf-8") as f:
+                json.dump([s.to_dict() for s in students],f, indent=4)
+        except OSError:
+            print("Error: could not save your data.")    
 
     
             
