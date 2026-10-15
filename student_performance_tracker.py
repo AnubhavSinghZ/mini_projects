@@ -61,6 +61,14 @@ class Student:
     
           # ---- SAVING AND LOADING----
     
+def load_students():
+    if not os.path.exists(DATA_FILE):
+        return[]
+    try:
+        with open(DATA_FILE, "r",encoding="utf-8") as f:
+            return[Student.from_dict(d) for d in json.load(f)]
+    
+
     
             
                     
