@@ -61,14 +61,6 @@ class Student:
 
         # -----Input Helpers-----
 
-        def get_number(prompt, low,high, as_int=False):
-            """Keep asking until the user enters a number between low and high."""
-            while True:
-                try:
-                    value=int(input(prompt)) if as_int else float(input(prompt))
-                    if low<=value<=high:
-                        return value
-                    print(f"Enter a value between {low} and {high}")
-                expect ValueError:
+        
                 
                 
