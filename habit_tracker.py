@@ -2,7 +2,7 @@ import re
 from datetime import date, timedelta
 from typing import Optional, Dict, Any
 
-# ___ Keyword lists (easy to extend later)___
+# ___ Keyword list (easy to extend later)___
 
 COMPLETION_WORDS=["did", "done", "finished0", "completed"]
 SKIPPED_WORDS=["skipped","missed", "didn't do", "did not do"]
