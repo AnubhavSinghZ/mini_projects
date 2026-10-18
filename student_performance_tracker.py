@@ -90,6 +90,18 @@ def get_number(prompt,low, high,as_int=False):
         except ValueError:
             print("Please enter a valid Number.")
 
+def find_student(students,roll_no):
+    for s in students:
+        if s.roll_no==roll_no:
+            return s
+        return None
+
+def ask_marks():
+    marks={}
+    for subject in SUBJECTS:
+        marks[subject]=get_number(f"{subject} marks (0=100):" , 0, 100, as_int=True)
+    return marks
+
     
             
                     
