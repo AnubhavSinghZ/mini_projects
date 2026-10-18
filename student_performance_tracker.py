@@ -133,7 +133,20 @@ def update_marks(students):
     student.marks=ask_marks()
     save_students(students)
     print("Mark Updated.")
-    
+
+def delete_student(students):
+    print("\n --- Delete Student ---")
+    roll_no=get_number("Roll Number: ", 1, 99999, as_int=True)
+    student = find_student(students, roll_no)
+    if not  student:
+        print("Student not found. ")
+        return
+    students.remove(student)
+    save_students(students)
+    print(f"Deleted {student.name}")
+
+
+
 
     
             
