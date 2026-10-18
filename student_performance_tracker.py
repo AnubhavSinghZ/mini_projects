@@ -71,12 +71,24 @@ def load_students():
         print("Could not read the data file. Starting with an empty list.")
         return[]
 
-    def save_students(students):
+def save_students(students):
+    try:
+        with open(DATA_FILE,"w", encoding="utf-8") as f:
+            json.dump([s.to_dict() for s in students],f, indent=4)
+    except OSError:
+            print("Error: could not save your data.")   
+
+# ---- Input Helpers----
+def get_number(prompt,low, high,as_int=False):
+    """"Keep asking until the user enters a number between low and high."""
+    while True:
         try:
-            with open(DATA_FILE,"w", encoding="utf-8") as f:
-                json.dump([s.to_dict() for s in students],f, indent=4)
-        except OSError:
-            print("Error: could not save your data.")    
+            value=int(input(prompt)) if as_int else float(input(prompt))
+            if low<=value<=high:
+                return value
+            print(f"Enter a value between {low} and {high}.")
+        except ValueError:
+            print("Please enter a valid Number.")
 
     
             
