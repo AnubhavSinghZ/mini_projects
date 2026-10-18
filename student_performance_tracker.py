@@ -102,6 +102,23 @@ def ask_marks():
         marks[subject]=get_number(f"{subject} marks (0=100):" , 0, 100, as_int=True)
     return marks
 
+# ---- Features---
+
+def add_student(students):
+    print("\n --- Add Student ---")
+    roll_no=get_number("Roll Number:", 1,99999, as_int=False)
+    if find_student(students,roll_no):
+        print("A student with this roll number already exixts.")
+        return
+    name =input("Name: ").strip()
+    if not name:
+        print("Name cannot be empty")
+        return
+    hours=get_number("Average study hours per day (0-16): ", 0,16)
+    print("Enter Marks: ")
+    marks=ask_marks()
+
+
     
             
                     
