@@ -118,6 +118,22 @@ def add_student(students):
     print("Enter Marks: ")
     marks=ask_marks()
 
+    students.append(Student(roll_no,name,hours, marks))
+    save_students(students)
+    print((f"\nAdded {name}"))
+
+def update_marks(students):
+    print("\n ---Update Marks ----")
+    roll_no=get_number("Roll number: ", 1, 99999, as_int=True)
+    student=find_student(students, roll_no)
+    if not student:
+        print("Student not found.")
+        return
+    print(f"Updating marks fot {student.name}:")
+    student.marks=ask_marks()
+    save_students(students)
+    print("Mark Updated.")
+    
 
     
             
