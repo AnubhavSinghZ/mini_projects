@@ -25,6 +25,7 @@ Each script in this repo is a small, self-contained project that explores a diff
 | 9 | 🔐 Password Generator | [`password_generator.py`](./password_generator.py) | `random`, `string` module |
 | 10 | ❓ Quiz Game | [`quiz_game.py`](./quiz_game.py) | Dictionaries, functions, scoring logic |
 | 11 | ✅ To-Do List Parser (NLP-style) | [`to_do.py`](./to_do.py) | Regex, intent detection, date parsing |
+| 12 | 📊Student Performance Tracker |
 
 ---
 
