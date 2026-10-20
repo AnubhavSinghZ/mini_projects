@@ -156,3 +156,22 @@ def view_ranklist(students):
     for rank, s in enumerate(ranked,start=1):
         result="Pass" if s.has_passed() else "Fail"
         print(f"{rank:<6}{s.roll_no:<8}{s.name[:17]:<18}{s.total():>7}{s.average():>8.1f}{s.grade():>7}{result:>9}")
+
+def student_report(students):
+    print("\n--- Student Report ---")
+    roll_no = get_number("Roll number: ", 1, 99999, as_int=True)
+    s = find_student(students, roll_no)
+    if not s:
+        print("Student not found.")
+        return
+    print(f"\n{s.name} (Roll {s.roll_no}) | Study hours/day: {s.study_hours}")
+    print("-" * 40)
+    for subject, mark in s.marks.items():
+        bar = "█" * (mark // 5)
+        flag = "" if mark >= PASS_MARK else "  <- below pass mark"
+        print(f"{subject:<10}{mark:>4}  {bar}{flag}")
+    print("-" * 40)
+    print(f"Total: {s.total()}/{len(s.marks) * 100}   Average: {s.average():.1f}   Grade: {s.grade()}")
+    best = max(s.marks, key=s.marks.get)
+    weakest = min(s.marks, key=s.marks.get)
+    print(f"Strongest subject: {best} | Needs work: {weakest}")
