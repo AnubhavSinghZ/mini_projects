@@ -155,3 +155,4 @@ def view_ranklist(students):
     print("-"*63)
     for rank, s in enumerate(ranked,start=1):
         result="Pass" if s.has_passed() else "Fail"
+        print(f"{rank:<6}{s.roll_no:<8}{s.name[:17]:<18}{s.total():>7}{s.average():>8.1f}{s.grade():>7}{result:>9}")
