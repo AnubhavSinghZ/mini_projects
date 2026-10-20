@@ -145,4 +145,13 @@ def delete_student(students):
     save_students(students)
     print(f"Deleted {student.name}")
 
-        
+def view_ranklist(students):
+    print("\n ----RANK LIST ----")  
+    if not students:
+        print("No students yet.")
+        return
+    ranked=sorted(students,key=lambda s: s.average(), reverse=True)
+    print(f"{'Rank':<6}{'Roll':<8}{'Name':<18}{'Total':>7}{'Avg':>8}{'Grade':>7}{'Result':>9}")
+    print("-"*63)
+    for rank, s in enumerate(ranked,start=1):
+        result="Pass" if s.has_passed() else "Fail"
