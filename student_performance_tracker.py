@@ -145,11 +145,4 @@ def delete_student(students):
     save_students(students)
     print(f"Deleted {student.name}")
 
-
-
-
-    
-            
-                    
-                    
-    
+        
