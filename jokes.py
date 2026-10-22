@@ -1,4 +1,4 @@
-import pyjokes
+import pyjokes # pyjokes library
 
 joke= pyjokes.get_joke()
 print("Joke of the Moment:")
