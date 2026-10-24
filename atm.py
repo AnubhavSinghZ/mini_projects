@@ -1,5 +1,5 @@
 def atm_projcts():
-    balance=10000    #starting balance
+    balance=10000    #Starting Balance
     is_running=True
     print("---THIS IS A DEMO ATM---")
 
