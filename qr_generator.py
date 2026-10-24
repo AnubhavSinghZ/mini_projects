@@ -18,3 +18,10 @@ Install requirements first:
 Run:
     python qr_generator.py
 """
+
+import os
+import tkinter as tk
+from tkinter import ttk, filedialog, messagebox
+import qrcode
+from qrcode.constants import ERROR_CORRECT_H
+from PIL import Image, ImageTk
