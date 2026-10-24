@@ -25,3 +25,19 @@ from tkinter import ttk, filedialog, messagebox
 import qrcode
 from qrcode.constants import ERROR_CORRECT_H
 from PIL import Image, ImageTk
+
+
+
+# ----------------------------------------------------------------------
+# Data builders: each QR "type" formats the user's input into the right
+# string format so scanning apps understand what to do with it.
+# ----------------------------------------------------------------------
+ 
+def build_plain_text(fields):
+    return fields["text"].get("1.0", "end").strip()
+ 
+ 
+def build_link(fields):
+    url = fields["url"].get().strip()
+    if url and not url.lower().startswith(("http://", "https://")):
+        url = "https://" + url
