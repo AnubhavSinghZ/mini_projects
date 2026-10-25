@@ -67,3 +67,25 @@ def build_wifi(fields):
     # Standard WIFI: QR format understood by phone camera apps
     sec = "nopass" if security == "None" else security
     return "WIFI:T:{};S:{};P:{};H:{};;".format(sec, ssid, password, hidden)
+
+
+def build_contact(fields):
+    name = fields["name"].get().strip()
+    phone = fields["phone"].get().strip()
+    email = fields["email"].get().strip()
+    org = fields["org"].get().strip()
+    # vCard format - scanning offers "Add to Contacts"
+    vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:{}".format(name),
+        "FN:{}".format(name),
+    ]
+    if org:
+        vcard.append("ORG:{}".format(org))
+    if phone:
+        vcard.append("TEL:{}".format(phone))
+    if email:
+        vcard.append("EMAIL:{}".format(email))
+    vcard.append("END:VCARD")
+    return "\n".join(vcard)
