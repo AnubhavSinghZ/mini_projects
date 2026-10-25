@@ -41,3 +41,19 @@ def build_link(fields):
     url = fields["url"].get().strip()
     if url and not url.lower().startswith(("http://", "https://")):
         url = "https://" + url
+
+
+def build_social(fields):
+    platform = fields["platform"].get()
+    handle = fields["handle"].get().strip().lstrip("@")
+    templates = {
+        "Instagram": "https://instagram.com/{}",
+        "Facebook": "https://facebook.com/{}",
+        "Twitter / X": "https://x.com/{}",
+        "LinkedIn": "https://linkedin.com/in/{}",
+        "GitHub": "https://github.com/{}",
+        "WhatsApp (number)": "https://wa.me/{}",
+        "Telegram": "https://t.me/{}",
+    }
+    template = templates.get(platform, "https://{}")
+    return template.format(handle)
