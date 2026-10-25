@@ -89,3 +89,11 @@ def build_contact(fields):
         vcard.append("EMAIL:{}".format(email))
     vcard.append("END:VCARD")
     return "\n".join(vcard)
+
+
+
+def build_email(fields):
+    to = fields["to"].get().strip()
+    subject = fields["subject"].get().strip()
+    body = fields["body"].get("1.0", "end").strip()
+    return "mailto:{}?subject={}&body={}".format(to, subject, body)
