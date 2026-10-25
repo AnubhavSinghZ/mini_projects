@@ -15,8 +15,7 @@ hosted online. Scanning the code then opens that link.
 Install requirements first:
     pip install qrcode[pil] pillow
  
-Run:
-    python qr_generator.py
+
 """
 
 import os
