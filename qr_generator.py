@@ -57,3 +57,13 @@ def build_social(fields):
     }
     template = templates.get(platform, "https://{}")
     return template.format(handle)
+
+
+def build_wifi(fields):
+    ssid = fields["ssid"].get().strip()
+    password = fields["password"].get().strip()
+    security = fields["security"].get()
+    hidden = "true" if fields["hidden"].get() else "false"
+    # Standard WIFI: QR format understood by phone camera apps
+    sec = "nopass" if security == "None" else security
+    return "WIFI:T:{};S:{};P:{};H:{};;".format(sec, ssid, password, hidden)
