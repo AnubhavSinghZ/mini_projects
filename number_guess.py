@@ -1,4 +1,6 @@
-
+"""
+It is a number guessing Game
+"""
 
 def start_game():
 
