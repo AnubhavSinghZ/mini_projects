@@ -97,3 +97,10 @@ def build_email(fields):
     subject = fields["subject"].get().strip()
     body = fields["body"].get("1.0", "end").strip()
     return "mailto:{}?subject={}&body={}".format(to, subject, body)
+
+
+def build_sms(fields):
+    number = fields["number"].get().strip()
+    message = fields["message"].get("1.0", "end").strip()
+    return "SMSTO:{}:{}".format(number, message)
+
