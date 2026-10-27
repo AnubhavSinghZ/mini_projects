@@ -104,3 +104,9 @@ def build_sms(fields):
     message = fields["message"].get("1.0", "end").strip()
     return "SMSTO:{}:{}".format(number, message)
 
+
+def build_file_link(fields):
+    url = fields["url"].get().strip()
+    if url and not url.lower().startswith(("http://", "https://")):
+        url = "https://" + url
+    return url
