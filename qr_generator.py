@@ -110,3 +110,67 @@ def build_file_link(fields):
     if url and not url.lower().startswith(("http://", "https://")):
         url = "https://" + url
     return url
+
+# Maps each QR type name to (list of field specs, builder function)
+# field spec: (key, label, kind) -- kind is "entry", "text", "combo", "check"
+QR_TYPES = {
+    "Plain Text": {
+        "fields": [("text", "Text", "text")],
+        "builder": build_plain_text,
+    },
+    "Website / Webpage Link": {
+        "fields": [("url", "URL (e.g. https://example.com)", "entry")],
+        "builder": build_link,
+    },
+    "YouTube Video": {
+        "fields": [("url", "YouTube video URL", "entry")],
+        "builder": build_youtube,
+    },
+    "Image / Video / File (hosted link)": {
+        "fields": [("url", "Link to the file (Drive, Dropbox, etc.)", "entry")],
+        "builder": build_file_link,
+    },
+    "Social Media Profile": {
+        "fields": [
+            ("platform", "Platform", "combo", [
+                "Instagram", "Facebook", "Twitter / X", "LinkedIn",
+                "GitHub", "WhatsApp (number)", "Telegram",
+            ]),
+            ("handle", "Username / number (no @)", "entry"),
+        ],
+        "builder": build_social,
+    },
+    "WiFi Network": {
+        "fields": [
+            ("ssid", "Network name (SSID)", "entry"),
+            ("password", "Password", "entry"),
+            ("security", "Security", "combo", ["WPA", "WEP", "None"]),
+            ("hidden", "Hidden network", "check"),
+        ],
+        "builder": build_wifi,
+    },
+    "Contact Card": {
+        "fields": [
+            ("name", "Full name", "entry"),
+            ("phone", "Phone number", "entry"),
+            ("email", "Email", "entry"),
+            ("org", "Organization (optional)", "entry"),
+        ],
+        "builder": build_contact,
+    },
+    "Email": {
+        "fields": [
+            ("to", "Send to", "entry"),
+            ("subject", "Subject", "entry"),
+            ("body", "Body", "text"),
+        ],
+        "builder": build_email,
+    },
+    "SMS": {
+        "fields": [
+            ("number", "Phone number", "entry"),
+            ("message", "Message", "text"),
+        ],
+        "builder": build_sms,
+    },
+}
