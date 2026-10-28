@@ -191,3 +191,25 @@ class QRApp(tk.Tk):
         self._build_style()
         self._build_layout()
         self._on_type_change()
+     # -- styling ---------------------------------------------------
+    def _build_style(self):
+        style = ttk.Style(self)
+        try:
+            style.theme_use("clam")
+        except tk.TclError:
+            pass
+        bg = "#101418"
+        panel = "#171C22"
+        text = "#E8EDF2"
+        accent = "#4FD1C5"
+        style.configure("TFrame", background=bg)
+        style.configure("Panel.TFrame", background=panel)
+        style.configure("TLabel", background=bg, foreground=text, font=("Segoe UI", 10))
+        style.configure("Panel.TLabel", background=panel, foreground=text, font=("Segoe UI", 10))
+        style.configure("Heading.TLabel", background=bg, foreground=text, font=("Segoe UI", 15, "bold"))
+        style.configure("TButton", font=("Segoe UI", 10, "bold"), padding=8)
+        style.configure("Accent.TButton", background=accent, foreground="#06201C")
+        style.map("Accent.TButton", background=[("active", "#3FBFB2")])
+        style.configure("TCombobox", padding=4)
+
+
