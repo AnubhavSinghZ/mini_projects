@@ -211,5 +211,15 @@ class QRApp(tk.Tk):
         style.configure("Accent.TButton", background=accent, foreground="#06201C")
         style.map("Accent.TButton", background=[("active", "#3FBFB2")])
         style.configure("TCombobox", padding=4)
+      # -- layout ------------------------------------------------------
+    def _build_layout(self):
+        container = ttk.Frame(self, padding=18)
+        container.pack(fill="both", expand=True)
+ 
+        ttk.Label(container, text="QR Code Generator", style="Heading.TLabel").pack(anchor="w")
+        ttk.Label(
+            container,
+            text="Choose what the QR code should open or contain, fill in the details, then generate.",
+        ).pack(anchor="w", pady=(2, 14))
 
 
