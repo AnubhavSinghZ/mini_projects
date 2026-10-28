@@ -227,6 +227,31 @@ class QRApp(tk.Tk):
         body.columnconfigure(0, weight=1)
         body.columnconfigure(1, weight=1)
         body.rowconfigure(0, weight=1)
+     # -- left: form panel
+        left = ttk.Frame(body, style="Panel.TFrame", padding=16)
+        left.grid(row=0, column=0, sticky="nsew", padx=(0, 10))
+ 
+        ttk.Label(left, text="QR Type", style="Panel.TLabel").pack(anchor="w")
+        self.type_var = tk.StringVar(value="Website / Webpage Link")
+        type_combo = ttk.Combobox(
+            left, textvariable=self.type_var, values=list(QR_TYPES.keys()),
+            state="readonly",
+        )
+        type_combo.pack(fill="x", pady=(4, 14))
+        type_combo.bind("<<ComboboxSelected>>", lambda e: self._on_type_change())
+ 
+        self.fields_frame = ttk.Frame(left, style="Panel.TFrame")
+        self.fields_frame.pack(fill="both", expand=True)
+ 
+        logo_row = ttk.Frame(left, style="Panel.TFrame")
+        logo_row.pack(fill="x", pady=(12, 0))
+        ttk.Button(logo_row, text="Add logo (optional)", command=self._choose_logo).pack(side="left")
+        self.logo_label = ttk.Label(logo_row, text="No logo selected", style="Panel.TLabel")
+        self.logo_label.pack(side="left", padx=10)
+ 
+        ttk.Button(
+            left, text="Generate QR Code", style="Accent.TButton", command=self._generate,
+        ).pack(fill="x", pady=(18, 0))
 
 
                
