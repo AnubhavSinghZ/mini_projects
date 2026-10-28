@@ -174,3 +174,20 @@ QR_TYPES = {
         "builder": build_sms,
     },
 }
+
+
+class QRApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("QR Code Generator")
+        self.geometry("760x560")
+        self.minsize(680, 520)
+        self.configure(bg="#101418")
+ 
+        self.logo_path = None
+        self.current_qr_image = None   # PIL image, full resolution
+        self.current_preview = None    # PhotoImage shown on screen
+ 
+        self._build_style()
+        self._build_layout()
+        self._on_type_change()
