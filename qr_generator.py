@@ -221,5 +221,14 @@ class QRApp(tk.Tk):
             container,
             text="Choose what the QR code should open or contain, fill in the details, then generate.",
         ).pack(anchor="w", pady=(2, 14))
+ 
+        body = ttk.Frame(container)
+        body.pack(fill="both", expand=True)
+        body.columnconfigure(0, weight=1)
+        body.columnconfigure(1, weight=1)
+        body.rowconfigure(0, weight=1)
+
+
+               
 
 
