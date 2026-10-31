@@ -1,6 +1,6 @@
 # Expence Tracker 
 
-expencesList=[]  # list of expences in form of dictionary
+expencesList=[]  # list of expences in the form of dictionary
 print("===Welcome To Expence Tracker: Save Money Bro")
 while True:
     print("-- MENU --")
@@ -24,7 +24,7 @@ while True:
             "description":  description,
         }
         expencesList.append(expence)
-        print("\nCOOL,Exppences is Added successfully")
+        print("\nCOOL,Exppences is Added Successfully")
 
         # View Expence
     elif(choice == 2):
@@ -50,4 +50,4 @@ while True:
          print("Thank You For Using Expence Tracker")
          break
     else:
-         print("Invalid Choice, Please try Again")
+         print("Invalid Choice, Please try Again from Starting")
