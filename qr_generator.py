@@ -191,7 +191,7 @@ class QRApp(tk.Tk):
         self._build_style()
         self._build_layout()
         self._on_type_change()
-     # -- styling ---------------------------------------------------
+     # -- STYLING ---------------------------------------------------
     def _build_style(self):
         style = ttk.Style(self)
         try:
@@ -211,7 +211,7 @@ class QRApp(tk.Tk):
         style.configure("Accent.TButton", background=accent, foreground="#06201C")
         style.map("Accent.TButton", background=[("active", "#3FBFB2")])
         style.configure("TCombobox", padding=4)
-      # -- layout ------------------------------------------------------
+      # -- LAYOUT ------------------------------------------------------
     def _build_layout(self):
         container = ttk.Frame(self, padding=18)
         container.pack(fill="both", expand=True)
