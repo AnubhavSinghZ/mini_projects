@@ -93,7 +93,7 @@ def extract_habit_log(sentence: str) -> Dict[str, Any]:
     # --- Date Detection ---
     log_date= _extract_date(sentence)
 
-    # --- habit name ---
+    # --- Habit Name ---
     habit = _extract_habit_name(sentence, duration_match)
     return{
         "habit":habit,
