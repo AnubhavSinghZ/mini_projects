@@ -124,7 +124,7 @@ QR_TYPES = {
     },
     "YouTube Video": {
         "fields": [("url", "YouTube video URL", "entry")],
-        "builder":youtube,
+        "builder": build_youtube,
     },
     "Image / Video / File (hosted link)": {
         "fields": [("url", "Link to the file (Drive, Dropbox, etc.)", "entry")],
