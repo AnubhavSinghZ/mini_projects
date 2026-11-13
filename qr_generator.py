@@ -251,7 +251,19 @@ class QRApp(tk.Tk):
  
         ttk.Button(
             left, text="Generate QR Code", style="Accent.TButton", command=self._generate,
-        ).pack(fill="x", pady=(18, 0))
+        ).pack(fill="x", pady=(18, 0)
+
+
+    # -- right: preview panel
+        right = ttk.Frame(body, style="Panel.TFrame", padding=16)
+        right.grid(row=0, column=1, sticky="nsew")
+
+        ttk.Label(right, text="Preview", style="Panel.TLabel").pack(anchor="w")
+        self.preview_canvas = tk.Label(right, bg="#FFFFFF", width=260, height=260)
+        self.preview_canvas.pack(pady=14)
+
+        self.save_btn = ttk.Button(right, text="Save as PNG", command=self._save, state="disabled")
+        self.save_btn.pack(fill="x")
 
 
                
