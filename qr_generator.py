@@ -111,6 +111,12 @@ def build_file_link(fields):
         url = "https://" + url
     return url
 
+def build_youtube(fields):
+    url = fields["url"].get().strip()
+    if url and not url.lower().startswith(("http://", "https://")):
+        url = "https://" + url
+    return url
+
 # Maps each QR type name to (list of field specs, builder function)
 # field spec: (key, label, kind) -- kind is "entry", "text", "combo", "check"
 QR_TYPES = {
