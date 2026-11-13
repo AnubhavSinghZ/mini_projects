@@ -264,6 +264,55 @@ class QRApp(tk.Tk):
 
         self.save_btn = ttk.Button(right, text="Save as PNG", command=self._save, state="disabled")
         self.save_btn.pack(fill="x")
+     # -- dynamic form --------------------------------------------------
+    def _on_type_change(self):
+        for child in self.fields_frame.winfo_children():
+            child.destroy()
+
+        spec = QR_TYPES[self.type_var.get()]
+        self.active_fields = {}
+
+        for field in spec["fields"]:
+            key, label = field[0], field[1]
+            kind = field[2]
+            row = ttk.Frame(self.fields_frame, style="Panel.TFrame")
+            row.pack(fill="x", pady=6)
+            ttk.Label(row, text=label, style="Panel.TLabel").pack(anchor="w")
+
+            if kind == "entry":
+                widget = ttk.Entry(row)
+                widget.pack(fill="x")
+            elif kind == "text":
+                widget = tk.Text(row, height=4, bg="#20262E", fg="#E8EDF2", insertbackground="#E8EDF2")
+                widget.pack(fill="x")
+            elif kind == "combo":
+                options = field[3]
+                var = tk.StringVar(value=options[0])
+                widget = ttk.Combobox(row, textvariable=var, values=options, state="readonly")
+                widget.pack(fill="x")
+                widget._var = var  # keep reference
+            elif kind == "check":
+                var = tk.BooleanVar(value=False)
+                widget = ttk.Checkbutton(row, variable=var, style="Panel.TLabel")
+                widget.pack(anchor="w")
+                widget._var = var
+
+            self.active_fields[key] = self._wrap(widget, kind)
+
+    @staticmethod
+    def _wrap(widget, kind):
+        """Give every widget type a uniform .get() so builders stay simple."""
+        if kind == "combo":
+            class ComboWrap:
+                def get(self_inner):
+                    return widget._var.get()
+            return ComboWrap()
+        if kind == "check":
+            class CheckWrap:
+                def get(self_inner):
+                    return widget._var.get()
+            return CheckWrap()
+        return widget  # Entry and Text already support .get()
 
 
                
