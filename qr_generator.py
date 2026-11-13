@@ -313,6 +313,82 @@ class QRApp(tk.Tk):
                     return widget._var.get()
             return CheckWrap()
         return widget  # Entry and Text already support .get()
+     # -- actions ---------------------------------------------------
+    def _choose_logo(self):
+        path = filedialog.askopenfilename(
+            title="Choose a logo image",
+            filetypes=[("Image files", "*.png *.jpg *.jpeg")],
+        )
+        if path:
+            self.logo_path = path
+            self.logo_label.config(text=os.path.basename(path))
+
+    def _generate(self):
+        spec = QR_TYPES[self.type_var.get()]
+        try:
+            data = spec["builder"](self.active_fields)
+        except Exception as exc:
+            messagebox.showerror("Error", "Could not read the form: {}".format(exc))
+            return
+
+        if not data or not data.strip():
+            messagebox.showwarning("Missing info", "Please fill in the details first.")
+            return
+
+        qr = qrcode.QRCode(
+            version=None,
+            error_correction=ERROR_CORRECT_H,  # highest correction, needed if a logo is added
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(data)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white").convert("RGB")
+
+        if self.logo_path:
+            img = self._paste_logo(img, self.logo_path)
+
+        self.current_qr_image = img
+        preview = img.resize((260, 260))
+        self.current_preview = ImageTk.PhotoImage(preview)
+        self.preview_canvas.config(image=self.current_preview)
+        self.save_btn.config(state="normal")
+
+    @staticmethod
+    def _paste_logo(qr_img, logo_path):
+        qr_img = qr_img.copy()
+        logo = Image.open(logo_path).convert("RGBA")
+        qr_w, qr_h = qr_img.size
+        logo_size = qr_w // 4
+        logo.thumbnail((logo_size, logo_size))
+
+        # white backing so the logo stays readable against the QR pattern
+        pad = 10
+        backing = Image.new(
+            "RGBA", (logo.width + pad, logo.height + pad), "white"
+        )
+        backing.paste(logo, (pad // 2, pad // 2), logo)
+
+        pos = ((qr_w - backing.width) // 2, (qr_h - backing.height) // 2)
+        qr_img.paste(backing, pos, backing)
+        return qr_img
+
+    def _save(self):
+        if not self.current_qr_image:
+            return
+        path = filedialog.asksaveasfilename(
+            defaultextension=".png",
+            filetypes=[("PNG image", "*.png")],
+            initialfile="qr_code.png",
+        )
+        if path:
+            self.current_qr_image.save(path)
+            messagebox.showinfo("Saved", "QR code saved to:\n{}".format(path))
+
+
+if __name__ == "__main__":
+    app = QRApp()
+    app.mainloop()
 
 
                
