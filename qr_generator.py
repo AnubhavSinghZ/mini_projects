@@ -41,6 +41,7 @@ def build_link(fields):
     url = fields["url"].get().strip()
     if url and not url.lower().startswith(("http://", "https://")):
         url = "https://" + url
+    return url
 
 
 def build_social(fields):
@@ -265,7 +266,8 @@ class QRApp(tk.Tk):
         right.grid(row=0, column=1, sticky="nsew")
 
         ttk.Label(right, text="Preview", style="Panel.TLabel").pack(anchor="w")
-        self.preview_canvas = tk.Label(right, bg="#FFFFFF", width=260, height=260)
+        self.blank_img = tk.PhotoImage(width=260, height=260)
+        self.preview_canvas = tk.Label(right, image=self.blank_img, bg="#FFFFFF")
         self.preview_canvas.pack(pady=14)
 
         self.save_btn = ttk.Button(right, text="Save as PNG", command=self._save, state="disabled")
