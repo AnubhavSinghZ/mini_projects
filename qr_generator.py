@@ -124,7 +124,7 @@ QR_TYPES = {
     },
     "YouTube Video": {
         "fields": [("url", "YouTube video URL", "entry")],
-        "builder": build_youtube,
+        "builder":youtube,
     },
     "Image / Video / File (hosted link)": {
         "fields": [("url", "Link to the file (Drive, Dropbox, etc.)", "entry")],
@@ -249,9 +249,9 @@ class QRApp(tk.Tk):
         self.logo_label = ttk.Label(logo_row, text="No logo selected", style="Panel.TLabel")
         self.logo_label.pack(side="left", padx=10)
  
-        ttk.Button(
-            left, text="Generate QR Code", style="Accent.TButton", command=self._generate,
-        ).pack(fill="x", pady=(18, 0)
+        ttk.Button(left, text="Generate QR Code", style="Accent.TButton", command=self._generate,
+           ).pack(fill="x", pady=(18, 0))
+            
 
 
     # -- right: preview panel
